@@ -1,133 +1,88 @@
-import random
-import os
+# Python Program to illustrate 
+# Hangman Game 
+import random 
+from collections import Counter 
 
-# 首先是一个单词列表，作为常量用来存储单词
-WORDS = [ 'apple', 'banana', 'orange', 'coconut', 'strawberry', 'lime', 'grapefruit', 
-         'lemon', 'kumquat', 'blueberry', 'melon', 'mango', 'papaya', 'peach', 'persimmon', 
-         'raspberry', 'tangerine', 'watermelon', 'durian', 'starfruit' ]
+someWords = '''apple banana mango strawberry 
+orange grape pineapple apricot lemon coconut watermelon 
+cherry papaya berry peach lychee muskmelon'''
 
-# 一共有7次猜错的机会
-MAX_WRONG = 7
+someWords = someWords.split(' ') 
+# randomly choose a secret word from our "someWords" LIST. 
+word = random.choice(someWords) 
 
-# 接着是hangman的图像，用来显示游戏进度
-HANGMAN_PICS = [ '''
-        +---+
-        |   |
-        |
-        |
-        |
-        |
-        =========''', '''
-        +---+
-        |   |
-        |   O
-        |
-        |
-        |
-        =========''', '''
-        +---+
-        |   |
-        |   O
-        |   |
-        |
-        |
-        =========''', '''
-        +---+
-        |   |
-        |   O
-        |  /|
-        |
-        |
-        =========''', '''
-        +---+
-        |   |
-        |   O
-        |  /|\\
-        |
-        |
-        =========''', '''
-        +---+
-        |   |
-        |   O
-        |  /|\\
-        |  /
-        |
-        =========''', '''
-        +---+
-        |   |
-        |   O
-        |  /|\\
-        |  / \\
-        |
-        =========''']
+if __name__ == '__main__': 
+    print('Guess the word! HINT: word is a name of a fruit') 
 
-# 打印游戏的欢迎信息
-def welcome():
-    print('''
-    欢迎来到猜单词游戏！
-    猜对单词，你就能活下来！
-    猜错单词，你就会被绞死！
-    你一共有7次机会！
-    祝你好运！
-    ''')
+    for i in word: 
+        # For printing the empty spaces for letters of the word 
+        print('_', end=' ') 
+    print() 
 
-# 要求玩家选择开始游戏或者退出游戏
-def start_or_quit():
-    print('''
-    请选择：
-    1. 开始游戏
-    2. 退出游戏
-    ''')
-    choice = input('请选择：')
-    while choice != '1' and choice != '2':
-        choice = input('请选择：')
-    return choice
+    playing = True
+    # list for storing the letters guessed by the player 
+    letterGuessed = '' 
+    chances = len(word) + 2
+    correct = 0
+    flag = 0
+    try: 
+        while (chances != 0) and flag == 0: # flag is updated when the word is correctly guessed 
+            print() 
+            chances -= 1
 
-# 从单词列表中随机选择一个单词
-def get_word():
-    word = random.choice(WORDS)
-    return word
+            try: 
+                guess = str(input('Enter a letter to guess: ')) 
+            except: 
+                print('Enter only a letter!') 
+                continue
 
-# 打印游戏的状态，包括hangman图像和已经猜过的字母
-def display_board(missed_letters, correct_letters, secret_word):
-    print(HANGMAN_PICS[len(missed_letters)])
-    print()
+            # Validation of the guess 
+            if not guess.isalpha(): 
+                print('Enter only a LETTER') 
+                continue
+            else if len(guess) & gt 
+            1: 
+                print('Enter only a SINGLE letter') 
+                continue
+            else if guess in letterGuessed: 
+                print('You have already guessed that letter') 
+                continue
 
-    print("猜错的字符：", end = "")
-    for letter in missed_letters:
-        print(letter, end = ' ')
-    print()
+            # If letter is guessed correctly 
+            if guess in word: 
+                # k stores the number of times the guessed letter occurs in the word 
+                k = word.count(guess) 
+                for _ in range(k): 
+                    letterGuessed += guess # The guess letter is added as many times as it occurs 
 
-    blanks = '_' * len(secret_word)  # 用来存储单词的空白字符串
+            # Print the word 
+            for char in word: 
+                if char in letterGuessed and (Counter(letterGuessed) != Counter(word)): 
+                    print(char, end=' ') 
+                    correct += 1
+                # If user has guessed all the letters 
+                # Once the correct word is guessed fully, 
+                else if (Counter(letterGuessed) == Counter(word)): 
+                                                                # the game ends, even if chances remain 
+                    print(& quot 
+                        The word is: & quot 
+                        , end=' ') 
+                    print(word) 
+                    flag = 1
+                    print('Congratulations, You won!') 
+                    break # To break out of the for loop 
+                    break # To break out of the while loop 
+                else: 
+                    print('_', end=' ') 
 
-    # 将已经猜对的字母填入空白字符串中
-    for i in range(len(secret_word)):  # 遍历单词的每一个字母
-        if secret_word[i] in correct_letters:  # 如果字母在已经猜对的字母列表中
-            blanks = blanks[:i] + secret_word[i] + blanks[i+1:]  # 字符串是不可变类型，所以这里要重新赋值
-    
-    for letter in blanks:  # 打印空白字符串
-        print(letter, end = ' ')  # end = ' ' 表示打印完毕后不换行
-    print()  # 换行
+        # If user has used all of his chances 
+        if chances & lt 
+        = 0 and (Counter(letterGuessed) != Counter(word)): 
+            print() 
+            print('You lost! Try again..') 
+            print('The word was {}'.format(word)) 
 
-# 获取玩家猜的字母
-def get_guess(already_guessed):
-    guess = input('请猜一个字母：')
-    # 如果输入的不是一个字母，或者输入的是已经猜过的字母，就要求玩家重新输入
-    while guess == '' or len(guess) != 1 or guess not in 'abcdefghijklmnopqrstuvwxyz':
-        guess = input('请猜一个字母：')
-    guess = guess.lower()  # 将字母转换为小写
-    # 如果玩家猜过这个字母，就要求玩家重新输入
-    while guess in already_guessed:
-        guess = input('你已经猜过这个字母了，请猜一个新的字母：')
-        guess = guess.lower()
-    return guess
-
-# 游戏运行程序
-def run_game():
-    """游戏运行程序"""
-    welcome()  # 打印游戏的欢迎信息
-    choice = start_or_quit()  # 要求玩家选择开始游戏或者退出游戏
-
-    # 开始进行游戏循环
-    while choice == '1':
-        
+    except KeyboardInterrupt: 
+        print() 
+        print('Bye! Try again.') 
+        exit() 
