@@ -1,6 +1,30 @@
 # invent-your-own-computer-games-with-python
 python游戏编程快速上手
 
+# 代码实现
+
+- [chapter 01](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_001)
+- [chapter 02](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_002)
+- [chapter 03](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_003)
+- [chapter 04](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_004)
+- [chapter 05](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_005)
+- [chapter 06](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_006)
+- [chapter 07](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_007)
+- [chapter 08](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_008)
+- [chapter 09](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_009)
+- [chapter 10](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_010)
+- [chapter 11](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_011)
+- [chapter 12](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_012)
+- [chapter 13](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_013)
+- [chapter 14](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_014)
+- [chapter 15](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_015)
+- [chapter 16](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_016)
+- [chapter 17](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_017)
+- [chapter 18](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_018)
+- [chapter 19](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_019)
+- [chapter 20](https://github.com/YeJiu97/invent-your-own-computer-games-with-python/tree/main/src/chapter_020)
+
+
 # 书籍评价
 
 ![image-20240112111017202](README/image-20240112111017202.png)
